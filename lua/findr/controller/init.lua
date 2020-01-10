@@ -175,11 +175,17 @@ function M.delete()
 end
 
 function M.expand()
-    local input = user_io.getinput(prompt)
-    if input == '~' then
-        M.change_dir('~')
-    else
-        M.change_dir(user_io.get_filename(prompt))
+    if filetype == 'findr-files' then
+        local input = user_io.getinput(prompt)
+        if input == '~' then
+            M.change_dir('~')
+        else
+            M.change_dir(user_io.get_filename(prompt))
+        end
+    elseif filetype == 'findr-commands' then
+        local selected = user_io.get_selected()
+        M.quit()
+        source.expand(selected)
     end
 end
 

@@ -40,6 +40,7 @@ command! -complete=dir -nargs=? Findr call FindrLaunch('sources.files', <f-args>
 command! FindrBuffers call FindrLaunch('sources.buffers', './')
 command! FindrLocList call FindrLaunch('sources.loclist', './')
 command! FindrQFList call FindrLaunch('sources.qflist', './')
+command! FindrCommands call FindrLaunch('sources.commands', './')
 
 if !highlight_exists('FindrMatch')
   hi! link FindrMatch search
@@ -64,4 +65,5 @@ endif
 if !highlight_exists('FindrNormal')
   hi! link FindrNormal Normal
 endif
+
  sign define findrselected linehl=FindrSelected

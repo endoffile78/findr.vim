@@ -1,9 +1,9 @@
 setlocal ft=findr
 
 
-imap <buffer> / <plug>findr_cd
-imap <buffer> <tab> <plug>findr_cd
-imap <buffer> <c-l> <plug>findr_cd
+imap <buffer> / <plug>findr_iexpand
+imap <buffer> <tab> <plug>findr_iexpand
+imap <buffer> <c-l> <plug>findr_iexpand
 imap <buffer> <c-h> <plug>findr_parent_dir
 
 

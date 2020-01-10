@@ -14,12 +14,24 @@ function M.new_floating(filetype)
     local border = vim.api.nvim_get_var('findr_border')
     local columns = vim.api.nvim_get_option('columns')
     local lines = vim.api.nvim_get_option('lines')
+    local height
+    local width
+    local horizontal
+    local vertical
+    if false then
+        height = math.max(12, math.floor(lines/3))
+        width = columns
+        horizontal = math.floor((columns-width) / 2)
+        vertical = lines
+    else
+        columns = vim.api.nvim_get_option('columns')
+        lines = vim.api.nvim_get_option('lines')
 
-    local height = lines - (4+tabline_visible())
-    local width = math.min(80, columns-4)
-    local horizontal = math.floor((columns-width) / 2)
-    local vertical = 1 + tabline_visible()
-
+        height = lines - (4+tabline_visible())
+        width = math.min(80, columns-4)
+        horizontal = math.floor((columns-width) / 2)
+        vertical = 1 + tabline_visible()
+    end
     local options = {
         relative = 'editor',
         row = vertical,
@@ -28,7 +40,7 @@ function M.new_floating(filetype)
         height = height,
         style = 'minimal'
     }
-    if use_border then
+    if use_border and true then
         local top = border.top[1] .. string.rep(border.top[2], width-2) .. border.top[3]
         local mid = border.middle[1] .. string.rep(border.middle[2], width-2) .. border.middle[3]
         local bot = border.bottom[1] .. string.rep(border.bottom[2], width-2) .. border.bottom[3]
